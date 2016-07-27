@@ -9,7 +9,7 @@
           crossorigin="anonymous">
     <title>TaDoo!</title>
 </head>
-<body>
+<body ng-app="tadooApp"> <!-- Set Up Angular Module -->
 <div class="container-fluid" id="locationCategories">
     <div class="row">
         <div class="col-xs-12 text-center">
@@ -44,7 +44,7 @@
         </div>
     </div>
 </div>
-<div class="container-fluid">
+<div class="container-fluid" ng-controller="PlacesController">
     <div class="row">
         <div class="col-xs-12 text-center" id="locationList">
             <h2><span class="text-muted">What </span><span class="h1">TaDoo?</span></h2>
@@ -61,5 +61,8 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
         integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
         crossorigin="anonymous"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.js" charset="utf-8"></script>
+<script src="js/main.js" charset="UTF-8"></script>
+<script src="js/placesController.js" charset="UTF-8"></script>
 </body>
 </html>
