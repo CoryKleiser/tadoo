@@ -1,13 +1,20 @@
-<section class="categories">
-    <div class="container-fluid" id="locationCategories" ng-controller="PlacesController">
+<section id="categories">
+    <div class="container-fluid" id="locationCategories">
         <div class="row">
+            <div class="col-xs-12">
+                <p class="col-xs-9"><span class="col-xs-3 col-xs-offset-2 text-muted h4">what </span><span class="col-xs-4 h1">TaDoo?</span></p>
+                <a class="col-xs-1 col-xs-offset-1 h3" href="#/categories/" aria-label="Search by Zip Code.">
+                    <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                </a>
+            </div>
+
             <div class="col-xs-12 text-center">
-                <h1>TaDoo!</h1>
                 <ul class="list-unstyled">
-                    <li class="btn btn-primary btn-lg btn-block">Category 1</li>
-                    <li class="btn btn-primary btn-lg btn-block">Category 2</li>
-                    <li class="btn btn-primary btn-lg btn-block">Category 3</li>
-                    <li class="btn btn-primary btn-lg btn-block">Category 4</li>
+                    <a  class="btn btn-primary btn-lg btn-block" role="button" href="#/list/0"><li>Food</li></a>
+                    <a  class="btn btn-primary btn-lg btn-block" role="button" href="#/list/1"><li>Adventure</li></a>
+                    <a  class="btn btn-primary btn-lg btn-block" role="button" href="#/list/2"><li>Shopping</li></a>
+                    <a  class="btn btn-primary btn-lg btn-block" role="button" href="#/list/3"><li>Kids</li></a>
+                    <a  class="btn btn-primary btn-lg btn-block" role="button" href="#/list/4"><li>Chill Modes</li></a>
                 </ul>
             </div>
         </div>

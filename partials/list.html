@@ -1,13 +1,18 @@
-<section class="locationList">
+<section id="list">
     <div class="container-fluid">
         <div class="row">
+            <div class="col-xs-12">
+                <p class="col-xs-9"><span class="col-xs-3 col-xs-offset-2 text-muted h4">where </span><span class="col-xs-4 h1">{{catHeader}}?</span></p>
+                <a class="col-xs-1 col-xs-offset-1 h3" href="#/categories/" aria-label="Go back to category selection.">
+                    <span class="glyphicon glyphicon-triangle-left" aria-hidden="true"></span>
+                </a>
+            </div>
+
+
+
             <div class="col-xs-12 text-center" id="locationList">
-                <h2><span class="text-muted">what </span><span class="h1">TaDoo?</span></h2>
                 <ul class="list-unstyled">
-                    <li class="btn btn-success btn-lg btn-block">Location 1</li>
-                    <li class="btn btn-success btn-lg btn-block">Location 2</li>
-                    <li class="btn btn-success btn-lg btn-block">Location 3</li>
-                    <li class="btn btn-success btn-lg btn-block">Location 4</li>
+                    <li class="btn btn-success btn-lg btn-block" ng-repeat="place in places">Location 1</li>
                 </ul>
             </div>
         </div>
