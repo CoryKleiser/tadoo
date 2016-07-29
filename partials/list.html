@@ -13,7 +13,7 @@
             <div class="col-xs-12 text-center" id="locationList">
                 <ul class="list-unstyled">
                     <div class="btn btn-lg btn-block">
-                        <li ng-repeat="place in places">
+                        <li ng-controller="CatController" ng-repeat="place in places">
                                 {{item.restaurantName}}  rating: {{item.googleRating}}
                         </li>
                     </div>

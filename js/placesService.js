@@ -1,8 +1,10 @@
 
 angular.module(`tadooApp.service`, [])
 
-    .service(`TadooService`, [function () {
-        const service = {};
+    .service(`places`, [function Places () {
 
-        return service;
+        const places = this;
+
+        places.found = []
+
     }]);

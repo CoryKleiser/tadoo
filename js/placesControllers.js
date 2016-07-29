@@ -7,24 +7,24 @@ angular.module(`tadooApp.controller`, [])
 
         //Set Up Google Map and Location
 
-        $scope.places = [];
+        let places = [];
 
 
 
         navigator.geolocation.getCurrentPosition(function (position) {
-            let LatLng = {
+            userLocation = {
                 lat: position.coords.latitude,
                 lng: position.coords.longitude
             };
             request = {
-                location: LatLng,
+                location: userLocation,
                 radius: `3000`,
                 types: [`restaurant`]
             };
 
 
             const map = new google.maps.Map($(`#mapContainer`), {
-                center: LatLng,
+                center: userLocation,
                 zoom: 14,
             });
 
@@ -45,20 +45,22 @@ angular.module(`tadooApp.controller`, [])
                             googleRating: place.rating
                         };
 
-                        $scope.places.push(genInfo);
+                        places.push(genInfo);
                         // If the request succeeds, draw the place location on
                         // the map as a marker, and register an event to handle a
                         // click on the marker.
                     }
-                    console.log($scope.places);
+                    console.log(places);
                 }
                 else {
                     console.log(status);
                 }
             });
         });
+        console.log(places, `test`);
     }])
     .controller(`ListController`, [`$scope`, `$routeParams`, function ($scope, $routeParams) {
+        console.log($scope.places, `test2`);
         $scope.itemId = $routeParams.itemId;
         if ($scope.itemId == 0){
             $scope.category = 'restaurant';
