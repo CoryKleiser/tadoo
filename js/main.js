@@ -1,8 +1,8 @@
 //TODO: Initialize Angular Module
 const tadooApp = angular.module(`tadooApp`, [
     `ngRoute`,
-    `tadooApp.controller`,
-   // `tadooApp.service`
+    `tadooApp.service`,
+    `tadooApp.controller`
 ]);
 
 tadooApp.config([`$routeProvider`, function ($routeProvider) {
