@@ -13,37 +13,43 @@ angular.module(`tadooApp.controller`, [])
     })
     .controller(`ListController`, function ($scope, $routeParams, locate, places) {
 
-        let request = {
-            location: locate.userLocation,
-            radius: `3000`,
-            types: [`restaurant`]
-        };
-
-        $scope.locations = places.findPlaces(request);
-        console.log($scope.locations);
         console.log(locate.userLocation);
+
+
         let itemId = $routeParams.itemId;
         if (itemId == 0){
-            $scope.category = 'restaurant';
+            $scope.category = [`restaurant`];
             $scope.catHeader = `TaEat`;
         }
         else if (itemId == 1){
-            $scope.category = `adventure`;
+            $scope.category = [`amusement_park`,
+                `aquarium`,
+                `campground`,
+                `park`];
             $scope.catHeader = `TaGo`;
         }
         else if (itemId == 2){
-            $scope.category = `store`;
+            $scope.category = [`store`];
             $scope.catHeader = `TaShop`;
         }
         else if (itemId == 3){
-            $scope.category = `parks`;
-            $scope.catHeader = `TaPlay`;
+            $scope.category = [`parks`];
+            $scope.catHeader = `TaExplore`;
         }
         else if (itemId == 4){
-            $scope.category = `chill`;
+            $scope.category = [`chill`];
             $scope.catHeader = `TaChill`;
         }
 
+        let request = {
+            location: locate.userLocation,
+            radius: `3000`,
+            types: $scope.category
+        };
+
+        $scope.locations = places.findPlaces(request);
+
+        console.log($scope.locations);
 
 
         console.log($scope.category);
