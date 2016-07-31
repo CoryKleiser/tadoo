@@ -1,6 +1,9 @@
 
 angular.module(`tadooApp.service`, [])
 
+
+//This is the service that locates the user
+//                  if you see 'locate.' I'm getting the function/variable from here
     .service(`locate`, [function(){
         const locate = this;
         locate.map;
@@ -18,22 +21,26 @@ angular.module(`tadooApp.service`, [])
                     zoom: 14,
                 });
             });
-            console.log(locate.userLocation);
             return locate.userLocation;
         };
     }])
 
+
+    //This is my service that finds the places for me.. It works the same as the above service just with different var/fn.
+    //              If it starts with 'places.' it's being pulled from here
     .service(`places`, function(locate) {
 
         const places = this;
-        places.found = [];
 
-
+        // function to find places
         places.findPlaces = function(request){
-            places.found = [];
 
             const service = new google.maps.places.PlacesService(locate.map);
 
+            //instantiates found array
+            places.found = [];
+
+            //performs search and filters content in for loop
             service.nearbySearch(request, function(results, status) {
                 if (status == google.maps.places.PlacesServiceStatus.OK) {
 
@@ -55,11 +62,12 @@ angular.module(`tadooApp.service`, [])
                         // click on the marker.
                     }
                 }
+                //TODO: Handle Error
                 else {
                     console.log(status);
                 }
             });
-            return places.found;
+            console.log(places.found);
+            return places.found;//results
         };
-
-    });
+    })

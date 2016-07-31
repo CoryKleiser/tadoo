@@ -12,15 +12,13 @@
 
             <div class="col-xs-12 text-center" id="locationList">
                 <ul class="list-unstyled">
-                    <div class="btn btn-lg btn-block">
-                        <a ng-repeat="place in locations" class="btn btn-success btn-lg btn-block" role="button" ng-href="">
-                            <li>
+                    <div>
+                            <li ng-repeat="place in locations" class="btn btn-success btn-lg btn-block" role="button">
                                 <span class="h2">
                                     <span class="h3">{{place.restaurantName}}</span>
                                     <span class="h5 pull-right">rating:  {{place.googleRating}}</span>
                                 </span>
                             </li>
-                        </a>
                     </div>
                 </ul>
             </div>
