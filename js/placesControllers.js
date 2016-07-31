@@ -29,7 +29,7 @@ angular.module(`tadooApp.controller`, [])
             $scope.catHeader = `TaGo`;
         }
         else if (itemId == 2){
-            $scope.category = [`store`];
+            $scope.category = [`mall`];
             $scope.catHeader = `TaShop`;
         }
         else if (itemId == 3){

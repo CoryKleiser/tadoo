@@ -30,6 +30,7 @@ angular.module(`tadooApp.service`, [])
 
 
         places.findPlaces = function(request){
+            places.found = [];
 
             const service = new google.maps.places.PlacesService(locate.map);
 
