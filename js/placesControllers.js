@@ -58,7 +58,15 @@ angular.module(`tadooApp.controller`, [])
         };
 
 
-        $scope.locations = places.findPlaces(request);
+        places
+            .findPlaces(request)
+            .then(function(locations) {
+                $scope.locations = locations;
+                $scope.$apply();
+            })
+            .catch(function(err) {
+                console.log(err);
+            });
 
 
         console.log($scope.locations);
