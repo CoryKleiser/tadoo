@@ -11,14 +11,18 @@
 
 
             <div class="col-xs-12 text-center" id="locationList">
-                <ul class="list-unstyled">
+                <ul class="list-unstyled" >
                     <div>
-                            <li ng-repeat="place in locations" class="btn btn-success btn-lg btn-block" role="button">
-                                <span class="h2">
-                                    <span class="h4 text-left">{{place.restaurantName}}</span>
-                                    <span class="h5 pull-right">rating:  {{place.googleRating}}</span>
-                                </span>
-                            </li>
+                        <li ng-repeat="place in locations" class="list-group-item list-group-unstyled">
+                            <a href="#/info/{{place.index}}" class="btn btn-success btn-lg btn-block" role="button">
+
+                                    <span class="h2">
+                                        <span class="h4 text-left">{{place.name}}</span>
+                                        <span class="h5 pull-right">rating:  {{place.googleRating}}</span>
+                                    </span>
+
+                            </a>
+                        </li>
                     </div>
                 </ul>
             </div>

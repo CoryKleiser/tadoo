@@ -17,9 +17,7 @@ angular.module(`tadooApp.controller`, [])
     })
 
 // My List Controller THIS IS WHERE SOMETHING GOES WRONG (or in list.html)
-    .controller(`ListController`, function ($scope, $routeParams, locate, places) {
-
-        console.log(locate.userLocation);
+    .controller(`ListController`, function ($scope, $routeParams, $location, locate, places) {
 
         //instantiate locations var
         $scope.locations = [];
@@ -46,8 +44,7 @@ angular.module(`tadooApp.controller`, [])
             $scope.catHeader = `TaShop`;
         }
         else if (itemId == 3){
-            $scope.category = [`park`,
-                ``];
+            $scope.category = [`park`];
             $scope.catHeader = `TaPlay`;
         }
         else if (itemId == 4){
@@ -79,4 +76,31 @@ angular.module(`tadooApp.controller`, [])
 
 
         console.log($scope.category);
+
+
+        $scope.goInfo = function(hash){
+            $location.path(hash);
+        }
+
+    })
+
+    .controller(`InfoController`, function($scope, $routeParams, places){
+
+
+
+        //find selected Place
+        let whichPlace = $routeParams.itemId;
+        console.log(whichPlace);
+
+        //pull place data from Places Service
+        $scope.placeInfo = places.found[whichPlace];
+        console.log($scope.placeInfo);
+
+
+        //declare properties used in scope
+        // $scope.placeName = data[itemId].name;
+        // $scope.googleRating = data[itemId].googleRating;
+        // $scope.placeAddress = data[itemId].address;
+        // $scope.placePhotoLink = data[itemId].photoLink;
+
     });

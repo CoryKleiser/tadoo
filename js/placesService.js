@@ -55,9 +55,14 @@ angular.module(`tadooApp.service`, [])
                                 continue;
                             }
                             genInfo = {
+                                index: i,
                                 id: place.place_id,
-                                restaurantName: place.name,
-                                googleRating: place.rating
+                                name: place.name,
+                                googleRating: place.rating,
+                                // openNow: place.opening_hours.open_now,
+                                address: place.vicinity,
+                                //photoLink: place.photos[0].html_attributions[0],
+                                categories: place.types
                             };
 
                             places.found.push(genInfo);
@@ -75,4 +80,4 @@ angular.module(`tadooApp.service`, [])
                 });
             });
         };
-    })
+    });

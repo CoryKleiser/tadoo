@@ -15,10 +15,10 @@ tadooApp.config([`$routeProvider`, function ($routeProvider) {
         templateUrl: `partials/list.html`,
         controller: `ListController`
     }).
-    // when(`/info/`, {
-    //     templateUrl: `partials/info.html`,
-    //     controller: `InfoController`,
-    // }).
+    when(`/info/:itemId`, {
+        templateUrl: `partials/info.html`,
+        controller: `InfoController`,
+    }).
     // when(`/map/`, {
     //     templateUrl: `partials/map.html`,
     //     controller: `ListController`
