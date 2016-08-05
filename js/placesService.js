@@ -21,7 +21,7 @@ angular.module(`tadooApp.service`, [])
                     zoom: 14,
                 });
             });
-            return locate.userLocation;
+            return (locate.userLocation);
         };
     }])
 
@@ -45,14 +45,17 @@ angular.module(`tadooApp.service`, [])
                 service.nearbySearch(request, function(results, status) {
                     if (status == google.maps.places.PlacesServiceStatus.OK) {
 
+                        console.log(results);
+
                         //TODO: cycle through place results and filter needed information
                         for (var i = 0; i < results.length; i++) {
                             var place = results[i];
                             //TODO: filter results here
-                            if (place.rating === undefined){
+                            if (place.rating === undefined | place.rating < 3.8){
                                 continue;
                             }
                             genInfo = {
+                                id: place.place_id,
                                 restaurantName: place.name,
                                 googleRating: place.rating
                             };
@@ -62,7 +65,7 @@ angular.module(`tadooApp.service`, [])
                             // the map as a marker, and register an event to handle a
                             // click on the marker.
                         }
-
+                        console.log(places);
                         resolve(places.found);
                     }
                     //TODO: Handle Error

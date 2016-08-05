@@ -17,7 +17,7 @@ tadooApp.config([`$routeProvider`, function ($routeProvider) {
     }).
     // when(`/info/`, {
     //     templateUrl: `partials/info.html`,
-    //     controller: `ListController`,
+    //     controller: `InfoController`,
     // }).
     // when(`/map/`, {
     //     templateUrl: `partials/map.html`,

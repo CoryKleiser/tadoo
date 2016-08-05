@@ -5,14 +5,14 @@ angular.module(`tadooApp.controller`, [])
 // This is my Category Controller (controls the category.html/the initial state)
     .controller(`CatController`, function ($scope, $location, locate) {
 
+        //Set Up Google Map and Location
+        //Calls findUser fn from the locate Service
+        locate.findUser();
+
         //reference function for ngClick (goes to list.html)
         $scope.goList = function(hash){
             $location.path(hash);
         }
-
-        //Set Up Google Map and Location
-        //Calls findUser fn from the locate Service
-        locate.findUser();
 
     })
 
@@ -39,21 +39,27 @@ angular.module(`tadooApp.controller`, [])
             $scope.catHeader = `TaGo`;
         }
         else if (itemId == 2){
-            $scope.category = [`mall`];
+            $scope.category = [`shopping_mall`,
+                `clothing_store`,
+                `department_store`,
+                `shoe_store`];
             $scope.catHeader = `TaShop`;
         }
         else if (itemId == 3){
-            $scope.category = [`parks`];
-            $scope.catHeader = `TaExplore`;
+            $scope.category = [`park`,
+                ``];
+            $scope.catHeader = `TaPlay`;
         }
         else if (itemId == 4){
-            $scope.category = [`chill`];
+            $scope.category = [`art_gallery`,
+                `cafe`,
+                `night_club`];
             $scope.catHeader = `TaChill`;
         }
 
         let request = {
             location: locate.userLocation,
-            radius: `3000`,
+            radius: `8000`,
             types: $scope.category
         };
 
