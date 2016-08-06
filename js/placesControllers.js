@@ -44,14 +44,19 @@ angular.module(`tadooApp.controller`, [])
             $scope.catHeader = `TaShop`;
         }
         else if (itemId == 3){
-            $scope.category = [`park`];
-            $scope.catHeader = `TaPlay`;
+            $scope.category = [`convenience_store`,
+                `gas_station`];
+            $scope.catHeader = `TaFuel`;
         }
         else if (itemId == 4){
             $scope.category = [`art_gallery`,
                 `cafe`,
                 `night_club`];
             $scope.catHeader = `TaChill`;
+        }
+        else if (itemId == 5){
+            $scope.category = [`park`];
+            $scope.catHeader = `TaPlay`;
         }
 
         let request = {

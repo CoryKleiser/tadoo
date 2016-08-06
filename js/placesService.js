@@ -26,7 +26,7 @@ angular.module(`tadooApp.service`, [])
 
 
     //This service finds the places
-    .service(`places`, function($http, locate) {
+    .service(`places`, function($http, $location, locate) {
 
         const places = this;
 
@@ -51,20 +51,23 @@ angular.module(`tadooApp.service`, [])
                         for (var i = 0; i < results.length; i++) {
                             var place = results[i];
 
-                            //TODO: filter results here
-                            if (place.rating >= 3.8) {
+                            //set results
+                            const genInfo = {
+                                index: j,
+                                id: place.place_id,
+                                name: place.name,
+                                googleRating: place.rating,
+                                photo: place.icon,
+                                //openNow: place.opening_hours.open_now,
+                                address: place.vicinity,
+                                //photoLink: place.photos[0].html_attributions[0],
+                                categories: place.types
+                            };
 
-                                const genInfo = {
-                                    index: j,
-                                    id: place.place_id,
-                                    name: place.name,
-                                    googleRating: place.rating,
-                                    photo: place.icon,
-                                    //openNow: place.opening_hours.open_now,
-                                    address: place.vicinity,
-                                    //photoLink: place.photos[0].html_attributions[0],
-                                    categories: place.types
-                                };
+                            //TODO: filter results here
+                            if (place.rating >= 3.8 | place.types.includes(`gas_station`) | place.types.includes(`convenience_store`)) {
+
+
 
                                 //TODO:: take the previous if statement out and filter results to improve places found
                                 // if(genInfo.categories.includes(`restaurant`)&&genInfo.googleRating<3.8){
@@ -83,7 +86,7 @@ angular.module(`tadooApp.service`, [])
                         //test out places
                         console.log(places);
                         resolve(places.found);
-                        reject($locations.hash(`#/categories/`));
+                        reject($location.hash(`#/categories/`));
                     }
                     //TODO: Handle Error
                     else {

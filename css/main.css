@@ -3,9 +3,19 @@ body{
     background-color: #ffd792;
 }
 
+img{
+    padding:15px;
+}
+
+
 .bgimage{
     background-image: url('../images/bg1.jpg');
     background-position:center center;
     background-size: cover;
     height:150px;
+}
+
+
+#info-content{
+    color:#3b629d;
 }

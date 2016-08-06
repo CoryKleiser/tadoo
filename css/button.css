@@ -5,7 +5,7 @@ a:link{
     text-decoration: none;
 }
 a:visited{
-
+    color: #b5cadc;
 }
 a:hover{
 
@@ -13,6 +13,8 @@ a:hover{
 span{
     font-size:1em;
 }
+    span:focus{color: #b5cadc;}
+    span:hover{color: #b5cadc;  }
 #rating{
     font-size:.6em;
 }
