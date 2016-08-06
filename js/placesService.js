@@ -32,7 +32,7 @@ angular.module(`tadooApp.service`, [])
 
         // function to find places
         places.findPlaces = function(request){
-            return new Promise(function(resolve) {
+            return new Promise(function(resolve, reject) {
 
                 const service = new google.maps.places.PlacesService(locate.map);
 
@@ -83,6 +83,7 @@ angular.module(`tadooApp.service`, [])
                         //test out places
                         console.log(places);
                         resolve(places.found);
+                        reject($locations.hash(`#/categories/`));
                     }
                     //TODO: Handle Error
                     else {

@@ -13,10 +13,10 @@
             <div class="col-xs-12 text-center" id="locationList">
                 <ul class="list-unstyled" >
                     <div>
-                        <li ng-repeat="place in locations" class="list-group-item list-group-unstyled">
-                            <a href="#/info/{{place.index}}" class="btn btn-success btn-lg btn-block" role="button">
+                        <li ng-repeat="place in locations">
+                            <a href="#/info/{{place.index}}" class="">
 
-                                    <span class="h2">
+                                    <span class="btn btn-success btn-lg btn-block h2">
                                         <span class="h4 text-left">{{place.name}}</span>
                                         <span class="h5 pull-right">rating:  {{place.googleRating}}</span>
                                     </span>
