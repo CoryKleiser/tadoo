@@ -1,11 +1,18 @@
 <section class="locationInfo">
-    <div class="container-fluid cf" id="locationInfo" ng-controller="InfoController">
-        <header class="bgimage">
-            <div class="col-xs-12">
-                <p class="col-xs-9"><span class="col-xs-3 col-xs-offset-2 text-muted h5">HOME</span><span class="col-xs-4 h1">Here?</span></p>
-                <a class="col-xs-1 col-xs-offset-1 h3" href="#/categories/" aria-label="Go back to category selection.">
-                    <span class="glyphicon glyphicon-triangle-left" aria-hidden="true"></span>
-                </a>
+    <div class="container-fluid">
+        <div class="row">
+        <header  class="bgimage">
+            <div class="container-fluid">
+                <div class="row">
+                    <span class="col-xs-1 col-xs-offset-1 h4">go</span>
+
+                    <a class="col-xs-2 col-xs-offset-8 h3" href="#" aria-label="Search by Zip Code.">
+                        <span class="glyphicon glyphicon-triangle-left" aria-label="Go back to places list." aria-hidden="true"></span>
+                    </a>
+                </div>
+
+                <span class="col-xs-offset-2 h1">Here?</span>
+
             </div>
         </header>
 
@@ -13,22 +20,23 @@
 
 
 
-        <div class="row">
-            <div class="col-xs-offset-5">
-                <img ng-src="{{placeInfo.photo}}" alt="Category Icon" class="col-xs-4 img-responsive center-block">
-            </div>
-            <div class="col-xs-12 text-center">
-                <h2>{{ placeInfo.name }}</h2>
-                <h4>{{ placeInfo.address }}</h4>
-                <!--Description-->
-                <p>{{ placeDescription }}</p>
-                <section>
-                    <h4>Reviews</h4>
-                    <dl>
-                        <dd>Review</dd>
-                        <dt>Review Content...</dt>
-                    </dl>
-                </section>
+            <div class="row">
+                <div class="col-xs-offset-5">
+                    <img ng-src="{{placeInfo.photo}}" alt="Category Icon" class="col-xs-4 img-responsive center-block">
+                </div>
+                <div class="col-xs-12 text-center">
+                    <h2>{{ placeInfo.name }}</h2>
+                    <h4>{{ placeInfo.address }}</h4>
+                    <!--Description-->
+                    <p>{{ placeDescription }}</p>
+                    <section>
+                        <h4>Reviews</h4>
+                        <dl>
+                            <dd>Review</dd>
+                            <dt>Review Content...</dt>
+                        </dl>
+                    </section>
+                </div>
             </div>
         </div>
     </div>
