@@ -96,6 +96,9 @@ angular.module(`tadooApp.controller`, [])
         $scope.placeInfo = places.found[whichPlace];
         console.log($scope.placeInfo);
 
+        // $scope.specDetails = places.findDetails($scope.placeInfo.id);
+        // console.log($scope.specDetails);
+
 
         //declare properties used in scope
         // $scope.placeName = data[itemId].name;

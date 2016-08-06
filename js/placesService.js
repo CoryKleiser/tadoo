@@ -2,8 +2,7 @@
 angular.module(`tadooApp.service`, [])
 
 
-//This is the service that locates the user
-//                  if you see 'locate.' I'm getting the function/variable from here
+//This service locates the user
     .service(`locate`, [function(){
         const locate = this;
         locate.map;
@@ -26,15 +25,14 @@ angular.module(`tadooApp.service`, [])
     }])
 
 
-    //This is my service that finds the places for me.. It works the same as the above service just with different var/fn.
-    //              If it starts with 'places.' it's being pulled from here
-    .service(`places`, function(locate) {
+    //This service finds the places
+    .service(`places`, function($http, locate) {
 
         const places = this;
 
         // function to find places
         places.findPlaces = function(request){
-            return new Promise(function(resolve, reject) {
+            return new Promise(function(resolve) {
 
                 const service = new google.maps.places.PlacesService(locate.map);
 
@@ -48,28 +46,36 @@ angular.module(`tadooApp.service`, [])
                         console.log(results);
 
                         //TODO: cycle through place results and filter needed information
+                        //value to set spot in array
+                        var j = 0;
                         for (var i = 0; i < results.length; i++) {
                             var place = results[i];
-                            //TODO: filter results here
-                            if (place.rating === undefined | place.rating < 3.8){
-                                continue;
-                            }
-                            genInfo = {
-                                index: i,
-                                id: place.place_id,
-                                name: place.name,
-                                googleRating: place.rating,
-                                // openNow: place.opening_hours.open_now,
-                                address: place.vicinity,
-                                //photoLink: place.photos[0].html_attributions[0],
-                                categories: place.types
-                            };
 
-                            places.found.push(genInfo);
-                            // If the request succeeds, draw the place location on
-                            // the map as a marker, and register an event to handle a
-                            // click on the marker.
+                            //TODO: filter results here
+                            if (place.rating !== undefined | place.rating >= 3.8) {
+
+                                const genInfo = {
+                                    index: j,
+                                    id: place.place_id,
+                                    name: place.name,
+                                    googleRating: place.rating,
+                                    photo: place.icon,
+                                    //openNow: place.opening_hours.open_now,
+                                    address: place.vicinity,
+                                    //photoLink: place.photos[0].html_attributions[0],
+                                    categories: place.types
+                                };
+                                places.found.push(genInfo);
+                                j++;
+
+                                //:TODO work on making photos functional
+                                // if(place.photos[0]){
+                                //     genInfo.photo = place.photos[0];
+                                // }
+                            }
                         }
+
+                        //test out places
                         console.log(places);
                         resolve(places.found);
                     }
@@ -78,6 +84,18 @@ angular.module(`tadooApp.service`, [])
                         console.log(status);
                     }
                 });
+
+                places.findDetails = function (id) {
+                    const requestUrl = "https://maps.googleapis.com/maps/api/place/details/json?placeid="+
+                        id+"&extensions=review_summary&key=AIzaSyCr4811V1lwPq2VvTTUPhIyawTwUy6wbCo&libraries=places"
+                    $http.get({
+                        method: 'GET',
+                        url: requestUrl
+                    })
+                    .success(function callbackSuccess (data) {
+                        console.log(data);
+                    });
+                }
             });
         };
     });
