@@ -16,3 +16,24 @@ span{
 #rating{
     font-size:.6em;
 }
+
+.btn-primary{
+    background-color: #FF8738;
+    border: none;
+}
+    .btn-primary:link{
+        background-color: #ffa56a;
+    }
+    .btn-primary:visited{
+        background-color: #ffa56a;
+    }
+    .btn-primary:hover{
+        background-color: #ffa56a;
+    }
+    .btn-primary:active{
+        background-color: #ffa56a;
+    }
+
+.btn-success{
+
+}
