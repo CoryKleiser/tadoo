@@ -65,6 +65,11 @@ angular.module(`tadooApp.service`, [])
                                     //photoLink: place.photos[0].html_attributions[0],
                                     categories: place.types
                                 };
+
+                                //TODO:: take the previous if statement out and filter results to improve places found
+                                // if(genInfo.categories.includes(`restaurant`)&&genInfo.googleRating<3.8){
+                                //     continue;
+                                // }
                                 places.found.push(genInfo);
                                 j++;
 
