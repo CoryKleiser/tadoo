@@ -13,12 +13,12 @@
             <div class="col-xs-12 text-center" id="locationList">
                 <ul class="list-unstyled" >
                     <div>
-                        <li ng-repeat="place in locations">
-                            <a href="#/info/{{place.index}}" class="">
+                        <li class="col-sm-6 col-md-4 col-lg-2" ng-repeat="place in locations">
+                            <a href="#/info/{{place.index}}" class="text-left">
 
-                                    <span class="btn btn-success btn-lg btn-block h2">
-                                        <span class="h4 text-left">{{place.name}}</span>
-                                        <span class="h5 pull-right">rating:  {{place.googleRating}}</span>
+                                    <span class="btn btn-success btn-lg btn-block h2 clear-fix">
+                                        <span class="pull-left-xs">{{place.name}}</span>
+                                        <span class="pull-right glyphicon glyphicon-ok hidden-md hidden-lg" id="rating">  {{place.googleRating}}</span>
                                     </span>
 
                             </a>

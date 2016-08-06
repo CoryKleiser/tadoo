@@ -52,7 +52,7 @@ angular.module(`tadooApp.service`, [])
                             var place = results[i];
 
                             //TODO: filter results here
-                            if (place.rating !== undefined | place.rating >= 3.8) {
+                            if (place.rating >= 3.8) {
 
                                 const genInfo = {
                                     index: j,

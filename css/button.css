@@ -10,3 +10,9 @@ a:visited{
 a:hover{
 
 }
+span{
+    font-size:1em;
+}
+#rating{
+    font-size:.6em;
+}
