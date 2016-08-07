@@ -9,18 +9,22 @@ angular.module(`tadooApp.service`, [])
         locate.userLocation;
 
         locate.findUser = function(){
-            navigator.geolocation.getCurrentPosition(function (position) {
-                locate.userLocation = {
-                    lat: position.coords.latitude,
-                    lng: position.coords.longitude
-                };
-                console.log(locate.userLocation);
-                locate.map = new google.maps.Map($(`#mapContainer`), {
-                    center: locate.userLocation,
-                    zoom: 14,
+            return new Promise(function (resolve, reject) {
+
+
+                navigator.geolocation.getCurrentPosition(function (position) {
+                    locate.userLocation = {
+                        lat: position.coords.latitude,
+                        lng: position.coords.longitude
+                    };
+                    console.log(locate.userLocation);
+                    locate.map = new google.maps.Map($(`#mapContainer`), {
+                        center: locate.userLocation,
+                        zoom: 14,
+                    });
                 });
+                return (locate.userLocation);
             });
-            return (locate.userLocation);
         };
     }])
 

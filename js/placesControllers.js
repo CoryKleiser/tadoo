@@ -7,13 +7,13 @@ angular.module(`tadooApp.controller`, [])
 
         //Set Up Google Map and Location
         //Calls findUser fn from the locate Service
-        locate.findUser();
-
-        //reference function for ngClick (goes to list.html)
-        $scope.goList = function(hash){
-            $location.path(hash);
-        }
-
+        locate
+            .findUser()
+            .then(
+                //reference function for ngClick (goes to list.html)
+                $scope.goList = function(hash){
+                $location.path(hash);
+            });
     })
 
 // My List Controller THIS IS WHERE SOMETHING GOES WRONG (or in list.html)
@@ -83,14 +83,13 @@ angular.module(`tadooApp.controller`, [])
         console.log($scope.category);
 
 
-        $scope.goInfo = function(hash){
-            $location.path(hash);
-        }
-
     })
 
     .controller(`InfoController`, function($scope, $routeParams, places){
 
+        $scope.goBack = function(){
+            window.history.back();
+        };
 
 
         //find selected Place

@@ -1,20 +1,20 @@
 a{
     text-decoration:none;
+    color:#dee9fa;
 }
 a:link{
     text-decoration: none;
 }
 a:visited{
-    color: #b5cadc;
+    color: #dee9fa;
 }
 a:hover{
-
 }
 span{
     font-size:1em;
 }
-    span:focus{color: #b5cadc;}
-    span:hover{color: #b5cadc;  }
+    /*span:focus{color: #b5cadc;}*/
+    /*span:hover{color: #b5cadc;  }*/
 #rating{
     font-size:.6em;
 }
@@ -35,6 +35,11 @@ span{
     .btn-primary:active:hover{
         background-color: #ffa56a;
     }
+    .btn-primary.disabled:hover{
+        background-color: #ffa56a;
+    }
+
+
 .btn-success{
     background-color: #24a38a;
     border: none;
