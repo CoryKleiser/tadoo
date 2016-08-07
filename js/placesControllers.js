@@ -7,13 +7,22 @@ angular.module(`tadooApp.controller`, [])
 
         //Set Up Google Map and Location
         //Calls findUser fn from the locate Service
+        $scope.goList = function(hash){
+            if (locate.userLocation != undefined){
+
+                $location.path(hash);
+
+            }
+            else{
+                alert(`Please wait while we locate you.`);
+            }
+
+        }
         locate
             .findUser()
-            .then(
-                //reference function for ngClick (goes to list.html)
-                $scope.goList = function(hash){
-                $location.path(hash);
-            });
+            .then($scope.userLocation = locate.findUser);
+
+
     })
 
 // My List Controller THIS IS WHERE SOMETHING GOES WRONG (or in list.html)

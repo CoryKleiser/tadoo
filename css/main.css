@@ -1,6 +1,7 @@
 body{
     color: #dee9fa;
     background-color: #ffd792;
+    min-width:400px;
 }
 
 img{

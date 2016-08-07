@@ -17,12 +17,13 @@ angular.module(`tadooApp.service`, [])
                         lat: position.coords.latitude,
                         lng: position.coords.longitude
                     };
-                    console.log(locate.userLocation);
-                    locate.map = new google.maps.Map($(`#mapContainer`), {
-                        center: locate.userLocation,
-                        zoom: 14,
-                    });
                 });
+                    console.log(locate.userLocation);
+                locate.map = new google.maps.Map($(`#mapContainer`), {
+                    center: locate.userLocation,
+                    zoom: 14,
+                });
+
                 return (locate.userLocation);
             });
         };
