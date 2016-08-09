@@ -2,7 +2,7 @@
 angular.module(`tadooApp.controller`, [])
 
 
-// This is my Category Controller (controls the category.html/the initial state)
+//Category Controller
     .controller(`CatController`, function ($scope, $location, locate) {
 
         //Set Up Google Map and Location
@@ -25,12 +25,11 @@ angular.module(`tadooApp.controller`, [])
 
     })
 
-// My List Controller THIS IS WHERE SOMETHING GOES WRONG (or in list.html)
+//List Controller
     .controller(`ListController`, function ($scope, $routeParams, $location, locate, places) {
 
         //instantiate locations var
         $scope.locations = [];
-        console.log($scope.locations);
 
         //finds itemId
         let itemId = $routeParams.itemId;
@@ -53,8 +52,7 @@ angular.module(`tadooApp.controller`, [])
             $scope.catHeader = `TaShop`;
         }
         else if (itemId == 3){
-            $scope.category = [`convenience_store`,
-                `gas_station`];
+            $scope.category = [`gas_station`];
             $scope.catHeader = `TaFuel`;
         }
         else if (itemId == 4){
@@ -70,7 +68,7 @@ angular.module(`tadooApp.controller`, [])
 
         let request = {
             location: locate.userLocation,
-            radius: `8000`,
+            radius: `5000`,
             types: $scope.category
         };
 
@@ -85,13 +83,6 @@ angular.module(`tadooApp.controller`, [])
                 console.log(err);
             });
 
-
-        console.log($scope.locations);
-
-
-        console.log($scope.category);
-
-
     })
 
     .controller(`InfoController`, function($scope, $routeParams, places){
@@ -103,20 +94,14 @@ angular.module(`tadooApp.controller`, [])
 
         //find selected Place
         let whichPlace = $routeParams.itemId;
-        console.log(whichPlace);
 
         //pull place data from Places Service
         $scope.placeInfo = places.found[whichPlace];
-        console.log($scope.placeInfo);
 
+        //TODO: get review info and other info
         // $scope.specDetails = places.findDetails($scope.placeInfo.id);
         // console.log($scope.specDetails);
 
 
-        //declare properties used in scope
-        // $scope.placeName = data[itemId].name;
-        // $scope.googleRating = data[itemId].googleRating;
-        // $scope.placeAddress = data[itemId].address;
-        // $scope.placePhotoLink = data[itemId].photoLink;
 
     });

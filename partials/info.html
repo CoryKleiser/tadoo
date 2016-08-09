@@ -1,14 +1,15 @@
-<section class="locationInfo">
+<section id="info">
     <div class="container-fluid">
         <div class="row">
         <header  class="bgimage">
             <div class="container-fluid">
+
                 <div class="row">
                     <span class="col-xs-1 col-xs-offset-1 h3">go</span>
 
-                    <a class="col-xs-2 col-xs-offset-8 h3" href="">
+                    <div class="col-xs-2 col-xs-offset-8 h3">
                         <span class="glyphicon glyphicon-triangle-left" ng-click="goBack()" aria-label="Go back to places list." aria-hidden="true"></span>
-                    </a>
+                    </div>
                 </div>
 
                 <span class="col-xs-offset-2 h1">Here?</span>
@@ -30,13 +31,14 @@
                     <!--Description-->
                     <p>{{ placeDescription }}</p>
                     <section>
+                        <h4>User Rating:&nbsp;&nbsp;{{placeInfo.googleRating}}</h4>
                         <h4>Reviews</h4>
                         <dl>
                             <dt>Coming Soon</dt>
                             <dd>Review Content...</dd>
                         </dl>
                     </section>
-                    <a href="#/categories/" class="h2 info-content"><span class="glyphicon glyphicon-home info-content"><br>Categories</span></a>
+                    <a href="#/categories/" class="h2 info-content"><span class="glyphicon glyphicon-home info-content"><br>Home</span></a>
                 </div>
             </div>
         </div>

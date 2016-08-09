@@ -18,8 +18,7 @@ angular.module(`tadooApp.service`, [])
                         lng: position.coords.longitude
                     };
                 });
-                    console.log(locate.userLocation);
-                locate.map = new google.maps.Map($(`#mapContainer`), {
+                locate.map = new google.maps.Map($('#mapContainer'), {
                     center: locate.userLocation,
                     zoom: 14,
                 });
@@ -30,7 +29,7 @@ angular.module(`tadooApp.service`, [])
     }])
 
 
-    //This service finds the places
+    //service to find places
     .service(`places`, function($http, $location, locate) {
 
         const places = this;
@@ -48,8 +47,6 @@ angular.module(`tadooApp.service`, [])
                 service.nearbySearch(request, function(results, status) {
                     if (status == google.maps.places.PlacesServiceStatus.OK) {
 
-                        console.log(results);
-
                         //TODO: cycle through place results and filter needed information
                         //value to set spot in array
                         var j = 0;
@@ -63,33 +60,27 @@ angular.module(`tadooApp.service`, [])
                                 name: place.name,
                                 googleRating: place.rating,
                                 photo: place.icon,
+                                //TODO: implement open now status to show under info
                                 //openNow: place.opening_hours.open_now,
                                 address: place.vicinity,
-                                //photoLink: place.photos[0].html_attributions[0],
                                 categories: place.types
                             };
 
-                            //TODO: filter results here
-                            if (place.rating >= 3.8 | place.types.includes(`gas_station`) | place.types.includes(`convenience_store`)) {
+                            if (place.rating == undefined){
+                                genInfo.googleRating = `N/A`;
+                            }
 
+                            //TODO: adjust filter logic to improve places found
+                            if (place.rating >= 3.8 | place.types.includes(`gas_station`)) {
 
-
-                                //TODO:: take the previous if statement out and filter results to improve places found
-                                // if(genInfo.categories.includes(`restaurant`)&&genInfo.googleRating<3.8){
-                                //     continue;
-                                // }
                                 places.found.push(genInfo);
                                 j++;
 
-                                //:TODO work on making photos functional
-                                // if(place.photos[0]){
-                                //     genInfo.photo = place.photos[0];
-                                // }
                             }
+
                         }
 
                         //test out places
-                        console.log(places);
                         resolve(places.found);
                         reject($location.hash(`#/categories/`));
                     }
@@ -99,17 +90,20 @@ angular.module(`tadooApp.service`, [])
                     }
                 });
 
+
+                //TODO: find details on specified place
+/*
                 places.findDetails = function (id) {
-                    const requestUrl = "https://maps.googleapis.com/maps/api/place/details/json?placeid="+
-                        id+"&extensions=review_summary&key=AIzaSyCr4811V1lwPq2VvTTUPhIyawTwUy6wbCo&libraries=places"
                     $http.get({
                         method: 'GET',
-                        url: requestUrl
+                        url: 'https://maps.googleapis.com/maps/api/place/details/json?placeid='+id+'&extensions=review_summary&key=AIzaSyCr4811V1lwPq2VvTTUPhIyawTwUy6wbCo'
                     })
                     .success(function callbackSuccess (data) {
                         console.log(data);
                     });
+
                 }
+ */
             });
         };
     });
