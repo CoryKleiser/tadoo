@@ -1,4 +1,4 @@
-//TODO: Set up Locations Controller
+//: Set up Locations Controller
 angular.module(`tadooApp.controller`, [])
 
 
@@ -94,13 +94,17 @@ angular.module(`tadooApp.controller`, [])
 
         //find selected Place
         let whichPlace = $routeParams.itemId;
+        console.log(whichPlace);
 
         //pull place data from Places Service
         $scope.placeInfo = places.found[whichPlace];
 
+        console.log($scope.placeInfo);
+        console.log($scope.placeInfo.id);
+
         //TODO: get review info and other info
-        // $scope.specDetails = places.findDetails($scope.placeInfo.id);
-        // console.log($scope.specDetails);
+        $scope.specDetails = places.findDetails($scope.placeInfo.id);
+        console.log($scope.specDetails);
 
 
 

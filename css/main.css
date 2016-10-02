@@ -4,6 +4,12 @@ body{
     min-width:450px;
 }
 
+header b{
+    position: relative;
+    color: #618eb3;
+    left: -1em;
+}
+
 img{
     padding:15px;
 }
@@ -19,4 +25,11 @@ img{
 
 .info-content{
     color:#3b629d;
+}
+
+@media(max-width: 773px){
+    header b{
+        color: #ececec;
+        left: 0em;
+    }
 }

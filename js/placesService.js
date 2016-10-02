@@ -3,7 +3,7 @@ angular.module(`tadooApp.service`, [])
 
 
 //This service locates the user
-    .service(`locate`, [function(){
+    .service(`locate`, function(){
         const locate = this;
         locate.map;
         locate.userLocation;
@@ -26,7 +26,7 @@ angular.module(`tadooApp.service`, [])
                 return (locate.userLocation);
             });
         };
-    }])
+    })
 
 
     //service to find places
@@ -47,7 +47,7 @@ angular.module(`tadooApp.service`, [])
                 service.nearbySearch(request, function(results, status) {
                     if (status == google.maps.places.PlacesServiceStatus.OK) {
 
-                        //TODO: cycle through place results and filter needed information
+                        //: cycle through place results and filter needed information
                         //value to set spot in array
                         var j = 0;
                         for (var i = 0; i < results.length; i++) {
@@ -70,7 +70,7 @@ angular.module(`tadooApp.service`, [])
                                 genInfo.googleRating = `N/A`;
                             }
 
-                            //TODO: adjust filter logic to improve places found
+                            //:  filter logic to improve places found
                             if (place.rating >= 3.8 | place.types.includes(`gas_station`)) {
 
                                 places.found.push(genInfo);
@@ -84,26 +84,48 @@ angular.module(`tadooApp.service`, [])
                         resolve(places.found);
                         reject($location.hash(`#/categories/`));
                     }
-                    //TODO: Handle Error
+                    //: Handle Error
                     else {
                         console.log(status);
+                        alert(`Unable find your location!`);
                     }
                 });
 
 
                 //TODO: find details on specified place
-/*
                 places.findDetails = function (id) {
-                    $http.get({
-                        method: 'GET',
-                        url: 'https://maps.googleapis.com/maps/api/place/details/json?placeid='+id+'&extensions=review_summary&key=AIzaSyCr4811V1lwPq2VvTTUPhIyawTwUy6wbCo'
-                    })
-                    .success(function callbackSuccess (data) {
-                        console.log(data);
-                    });
 
+                    function requestListener(){
+                        console.log(this.responseText);
+                    }
+
+                    var xhr = new XMLHttpRequest();
+                    console.log(xhr);
+                    xhr.withCredentials = true;
+                    xhr.addEventListener("load", requestListener);
+                    xhr.open('GET', 'https://maps.googleapis.com/maps/api/place/details/json?placeid='+id+'&key=AIzaSyAJqkmPJs8LI71k7dSWc-KuYSi5zEoNpwk');
+                    xhr.send();
+
+
+                    // return $http({
+                    //     method: 'GET',
+                    //     url: 'https://maps.googleapis.com/maps/api/place/details/json?placeid='+id+'&key=AIzaSyAJqkmPJs8LI71k7dSWc-KuYSi5zEoNpwk'
+                    // }).
+                    // success(function(data, status) {
+                    //     console.log(status);
+                    //     var data = data;
+                    //     alert(JSON.stringify(data));
+                    // }).
+                    // error(function(data, status) {
+                    //     var data = data || "Request failed";
+                    //     var status = status;
+                    //     alert(data+status);
+                    // });
+
+                    // .then(function callbackSuccess (data) {
+                    //     console.log(data);
+                    // });
                 }
- */
             });
         };
     });

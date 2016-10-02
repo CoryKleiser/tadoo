@@ -1,4 +1,4 @@
-//TODO: Initialize Angular Module
+//: Initialize Angular Module
 const tadooApp = angular.module(`tadooApp`, [
     `ngRoute`,
     `tadooApp.service`,
