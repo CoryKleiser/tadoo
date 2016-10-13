@@ -29,15 +29,16 @@
                 </div>
                 <div class="col-xs-12 text-center">
                     <h2>{{ placeInfo.name }}</h2>
-                    <h4>{{ placeInfo.address }}</h4>
+                    <a role="button" class="btn btn-default btn-success" href="tel:{{phone}}">Call</a>
+                    <h4>{{ phone }}</h4>
                     <!--Description-->
                     <p>{{ placeDescription }}</p>
                     <section>
                         <h4>User Rating:&nbsp;&nbsp;{{placeInfo.googleRating}}</h4>
                         <h4>Reviews</h4>
-                        <dl>
+                        <dl ng-repeat="review in reviews">
                             <dt>Coming Soon</dt>
-                            <dd>Review Content...</dd>
+                            <dd>details.url</dd>
                         </dl>
                     </section>
                     <a href="#/categories/" class="h2 info-content"><span class="glyphicon glyphicon-home info-content"><br>Home</span></a>
