@@ -11,7 +11,6 @@ angular.module(`tadooApp.service`, [])
         locate.findUser = function(){
             return new Promise(function (resolve, reject) {
 
-
                 navigator.geolocation.getCurrentPosition(function (position) {
                     locate.userLocation = {
                         lat: position.coords.latitude,
@@ -23,6 +22,8 @@ angular.module(`tadooApp.service`, [])
                     zoom: 14,
                 });
 
+                console.log(locate.userLocation);
+                resolve(locate.userLocation);
                 return (locate.userLocation);
             });
         };
@@ -33,12 +34,13 @@ angular.module(`tadooApp.service`, [])
     .service(`places`, function($http, $location, locate) {
 
         const places = this;
+        const service = new google.maps.places.PlacesService(locate.map);
+
 
         // function to find places
         places.findPlaces = function(request){
             return new Promise(function(resolve, reject) {
 
-                const service = new google.maps.places.PlacesService(locate.map);
 
                 //instantiates found array
                 places.found = [];
@@ -47,9 +49,10 @@ angular.module(`tadooApp.service`, [])
                 service.nearbySearch(request, function(results, status) {
                     if (status == google.maps.places.PlacesServiceStatus.OK) {
 
+                        console.log(results);
                         //: cycle through place results and filter needed information
                         //value to set spot in array
-                        var j = 0;
+                        let j = 0;
                         for (var i = 0; i < results.length; i++) {
                             var place = results[i];
 
@@ -71,7 +74,7 @@ angular.module(`tadooApp.service`, [])
                             }
 
                             //:  filter logic to improve places found
-                            if (place.rating >= 3.8 | place.types.includes(`gas_station`)) {
+                            if (place.rating >= 3.8 || place.types.includes(`gas_station`)) {
 
                                 places.found.push(genInfo);
                                 j++;
@@ -82,50 +85,56 @@ angular.module(`tadooApp.service`, [])
 
                         //test out places
                         resolve(places.found);
-                        reject($location.hash(`#/categories/`));
                     }
                     //: Handle Error
                     else {
                         console.log(status);
                         alert(`Unable find your location!`);
+                        reject($location.hash(`#/categories/`));
                     }
                 });
-
+            });
+        };
 
                 //TODO: find details on specified place
                 places.findDetails = function (id) {
-
-                    function requestListener(){
-                        console.log(this.responseText);
-                    }
-
-                    var xhr = new XMLHttpRequest();
-                    console.log(xhr);
-                    xhr.withCredentials = true;
-                    xhr.addEventListener("load", requestListener);
-                    xhr.open('GET', 'https://maps.googleapis.com/maps/api/place/details/json?placeid='+id+'&key=AIzaSyAJqkmPJs8LI71k7dSWc-KuYSi5zEoNpwk');
-                    xhr.send();
+                    return new Promise(function (resolve, reject) {
 
 
-                    // return $http({
-                    //     method: 'GET',
-                    //     url: 'https://maps.googleapis.com/maps/api/place/details/json?placeid='+id+'&key=AIzaSyAJqkmPJs8LI71k7dSWc-KuYSi5zEoNpwk'
-                    // }).
-                    // success(function(data, status) {
-                    //     console.log(status);
-                    //     var data = data;
-                    //     alert(JSON.stringify(data));
-                    // }).
-                    // error(function(data, status) {
-                    //     var data = data || "Request failed";
-                    //     var status = status;
-                    //     alert(data+status);
-                    // });
 
-                    // .then(function callbackSuccess (data) {
-                    //     console.log(data);
-                    // });
-                }
-            });
-        };
+                        places.details = {};
+
+                        var request = {
+                            placeId: id
+                        };
+
+                        service.getDetails(request, callback);
+
+                        function callback(place, status) {
+                            if (status == google.maps.places.PlacesServiceStatus.OK) {
+
+                                places.details = place;
+                                resolve(places.details);
+
+                            }
+                            else{
+                                //TODO:: handle error
+                                reject();
+                            }
+                        }
+
+                    });
+
+
+
+                };
+
+        places.formatPhoneNumber = function (num) {
+
+            let phone = num;
+            phone.replace(/\s+/g, '-');
+            console.log(phone);
+            return phone;
+
+        }
     });
