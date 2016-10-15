@@ -1,3 +1,4 @@
+<!--TODO:: Format page with details and options (navigate, call, website, etc)-->
 <section id="info">
     <div class="container-fluid">
         <div class="row">
@@ -29,16 +30,18 @@
                 </div>
                 <div class="col-xs-12 text-center">
                     <h2>{{ placeInfo.name }}</h2>
-                    <a role="button" class="btn btn-default btn-success" href="tel:{{phone}}">Call</a>
+                    <a role="button" class="btn btn-default btn-success" target="_blank" href="tel:{{phone}}">Call</a>
+                    <a role="button" class="btn btn-default btn-success" target="_blank" href="{{details.website}}">Website</a>
+                    <a role="button" class="btn btn-default btn-success" target="_blank" href="{{details.url}}">Navigate</a>
                     <h4>{{ phone }}</h4>
-                    <!--Description-->
-                    <p>{{ placeDescription }}</p>
                     <section>
                         <h4>User Rating:&nbsp;&nbsp;{{placeInfo.googleRating}}</h4>
-                        <h4>Reviews</h4>
-                        <dl ng-repeat="review in reviews">
-                            <dt>Coming Soon</dt>
-                            <dd>details.url</dd>
+                        <h4>Reviews:</h4>
+                        <dl>
+                            <div ng-repeat="review in details.reviews">
+                            <dt>{{review.author_name}}</dt>
+                            <dd>{{review.text}}</dd>
+                            </div>
                         </dl>
                     </section>
                     <a href="#/categories/" class="h2 info-content"><span class="glyphicon glyphicon-home info-content"><br>Home</span></a>
