@@ -2,14 +2,10 @@ a{
     text-decoration:none;
     color:#dee9fa;
 }
-a:link{
-    text-decoration: none;
-}
-a:visited{
-    color: #dee9fa;
-}
-a:hover{
-}
+    a:link{
+        text-decoration: none;
+    }
+
 span{
     font-size:1em;
 }
@@ -54,6 +50,9 @@ span{
         background-color: #57d1b9;
     }
     .btn-success:active:hover{
+        background-color: #57d1b9;
+    }
+    .btn-success:visited{
         background-color: #57d1b9;
     }
 
