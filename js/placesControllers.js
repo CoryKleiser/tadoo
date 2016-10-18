@@ -101,8 +101,7 @@ angular.module(`tadooApp.controller`, [])
         //pull place data from Places Service
         $scope.placeInfo = places.found[whichPlace];
 
-        console.log($scope.placeInfo);
-        console.log($scope.placeInfo.id);
+        //: get review info and other info
         places.findDetails($scope.placeInfo.id)
             .then(function (details) {
                 $scope.details = details;
@@ -116,11 +115,5 @@ angular.module(`tadooApp.controller`, [])
             });
 
         console.log($scope.details);
-
-        //TODO: get review info and other info
-        // $scope.specDetails = places.findDetails($scope.placeInfo.id);
-        // console.log($scope.specDetails);
-
-
 
     });
