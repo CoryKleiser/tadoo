@@ -10,10 +10,32 @@ header b{
     left: -1em;
 }
 
+footer{
+    padding-top:15px;
+    padding-bottom:15px;
+    background-color: #3d7b3d;
+    color: #ececec;
+    width:100%;
+}
+
+footer a{
+    color: #ececec;
+}
+
+.fixFooter{
+    position: fixed;
+    bottom: 0;
+}
+
 img{
     padding:15px;
 }
 
+.vcenter {
+    display: inline-block;
+    vertical-align: middle;
+    float: none;
+}
 
 .bgimage{
     background-image: url('../images/bg1.jpg');
@@ -21,10 +43,17 @@ img{
     background-size: cover;
     height:150px;
 }
-
-
-.info-content{
+#info header{
+    background-image: none;
+    background-color: #3d7b3d;
+}
+/*TODO: fix content so footer does not cover it up*/
+#content{
+    background-color: #ececec;
+}
+#info #content{
     color:#3b629d;
+    background-color: #ececec;
 }
 
 @media(max-width: 773px){
