@@ -1,6 +1,6 @@
 body{
     color: #dee9fa;
-    background-color: #fff;
+    background-color: #ececec;
     min-width:450px;
 }
 
@@ -13,9 +13,10 @@ header b{
 footer{
     padding-top:15px;
     padding-bottom:15px;
-    background-color: #3d7b3d;
+    background-color: #59c038;
     color: #ececec;
     width:100%;
+    float:right;
 }
 
 footer a{
@@ -25,6 +26,10 @@ footer a{
 .fixFooter{
     position: fixed;
     bottom: 0;
+}
+
+#content{
+    padding-bottom: 75px;
 }
 
 img{
@@ -45,15 +50,13 @@ img{
 }
 #info header{
     background-image: none;
-    background-color: #3d7b3d;
+    background-color: #59c038;
 }
 /*TODO: fix content so footer does not cover it up*/
 #content{
-    background-color: #ececec;
 }
 #info #content{
     color:#3b629d;
-    background-color: #ececec;
 }
 
 @media(max-width: 773px){

@@ -11,14 +11,14 @@
                                  alt="Google street view of location" class="img-responsive img-rounded center-block">
                         </div>
                         <div class="col-xs-2">
-                            <img ng-src="{{placeInfo.photo}}" alt="Category Icon" class="img-responsive center-block vcenter">
+                            <img ng-src="{{placeInfo.photo}}" alt="Category Icon" class="img-responsive center-block">
                         </div>
                     </div>
                 </div>
             </header>
             <!--TODO: fix layout with bootstrap-->
-            <section id="content">
-                <div class="col-xs-12 text-center">
+            <section>
+                <div class="col-xs-12 text-center" id="content">
                     <h2>{{ placeInfo.name }}</h2>
                     <a role="button" class="btn btn-default btn-success" target="_blank" href="tel:{{phone}}">Call</a>
                     <a role="button" class="btn btn-default btn-success" target="_blank" href="{{details.website}}">Website</a>
@@ -29,19 +29,27 @@
                         <h4>Reviews:</h4>
 
                         <div class="container-fluid">
-                            <!--TODO : figure out how to make layout uniform-->
-                            <section ng-repeat="review in details.reviews">
-                                <div class="clear-fix"></div>
-                                <section class="col-sm-6 col-md-4 col-lg-3">
-                                    <div class="container-fluid">
-                                        <h4 class="col-xs-12 center-block">
-                                            <span class="text-center">{{review.author_name}}</span>
-                                            <span class="pull-right h5">{{review.rating}}/5</span>
-                                        </h4>
-                                        <p class="col-xs-12 center-block text-left">{{review.text}}</p>
-                                    </div>
-                                </section>
-                            </section>
+                            <div class="row">
+                                <!--fixme:: fix all layouts to span 12 cols-->
+                                    <section class="col-xs-12 col-sm-6" ng-repeat="review in details.reviews">
+                                        <!--TODO : figure out how to make layout uniform-->
+                                        <div class="panel panel-default">
+                                                <div class="container-fluid">
+                                                    <div class="panel-header">
+                                                        <h4>
+                                                            <span class="panel-title">{{review.author_name}}</span>
+                                                            <span class="pull-right h5">{{review.rating}}/5</span>
+                                                        </h4>
+                                                    </div>
+                                                    <div class="panel-body">
+                                                        <p class="text-left">
+                                                            {{review.text}}</p>
+                                                    </div>
+                                                </div>
+                                        </div>
+                                    </section>
+                                </div>
+                            </ul>
                         </div>
                     </section>
                 </div>
@@ -51,16 +59,18 @@
             <footer id="footer" class="text-center fixFooter">
                 <div class="container-fluid">
                     <div class="col-xs-2 col-xs-offset-4">
-                        <a href="#/categories/" class="center-block">
+                        <a href="#/categories/">
                             <span class="h2">
                                 <span class="glyphicon glyphicon-home" aria-label="Go to Tadoo Homepage" aria-hidden="true"></span>
                             </span>
                         </a>
                     </div>
                     <div class="col-xs-2">
-                        <span class="h2">
-                            <span class="glyphicon glyphicon-circle-arrow-left" ng-click="goBack()" aria-label="Go back to places list." aria-hidden="true"></span>
-                        </span>
+                        <a href="#">
+                            <span class="h2 link">
+                                <span class="glyphicon glyphicon-circle-arrow-left" ng-click="goBack()" aria-label="Go back to places list." aria-hidden="true"></span>
+                            </span>
+                        </a>
                     </div>
                 </div>
             </footer>

@@ -15,7 +15,7 @@
 
                 </div>
             </header>
-            <div class="col-xs-12 text-center">
+            <div class="col-xs-12 text-center" id="content">
                 <ul class="list-inline">
                     <div>
                         <li class="col-sm-6 col-md-4 col-lg-2"><span class="h2 btn btn-primary btn-lg btn-block" ng-click="goList('/list/0')">Food</span></li>
@@ -32,6 +32,24 @@
                     </div>
                 </ul>
             </div>
+            <footer id="footer" class="text-center fixFooter">
+                <div class="container-fluid">
+                    <div class="col-xs-2 col-xs-offset-4">
+                        <a href="#/categories/">
+                            <span class="h2">
+                                <span class="glyphicon glyphicon-home" aria-label="Go to Tadoo Homepage" aria-hidden="true"></span>
+                            </span>
+                        </a>
+                    </div>
+                    <div class="col-xs-2">
+                        <a href="#">
+                            <span class="h2 link">
+                                <span class="glyphicon glyphicon-circle-arrow-left" ng-click="goBack()" aria-label="Go back to places list." aria-hidden="true"></span>
+                            </span>
+                        </a>
+                    </div>
+                </div>
+            </footer>
         </div>
     </div>
 </section>
