@@ -4,6 +4,9 @@ body{
     min-width:450px;
 }
 
+header{
+    background-color: #59c038;
+}
 header b{
     position: relative;
     color: #618eb3;
@@ -48,12 +51,9 @@ img{
     background-size: cover;
     height:150px;
 }
-#info header{
-    background-image: none;
-    background-color: #59c038;
-}
 /*TODO: fix content so footer does not cover it up*/
-#content{
+#list header{
+    padding-bottom:10px;
 }
 #info #content{
     color:#3b629d;
