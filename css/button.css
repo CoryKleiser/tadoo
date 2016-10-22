@@ -67,7 +67,13 @@ span{
     .btn-info:active{
         background-color: #ffd386;
     }
+    .btn-info:active:focus{
+        background-color: #ffd386;
+    }
     .btn-info:active:hover{
         background-color: #ffd386;
+    }
+    .btn-info:visited{
+        background-color: #ffb638;
     }
 
