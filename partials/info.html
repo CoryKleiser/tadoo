@@ -20,10 +20,16 @@
             <section>
                 <div class="col-xs-12 text-center" id="content">
                     <h2>{{ placeInfo.name }}</h2>
-                    <a role="button" class="btn btn-default btn-success" target="_blank" href="tel:{{phone}}">Call</a>
-                    <a role="button" class="btn btn-default btn-success" target="_blank" href="{{details.website}}">Website</a>
-                    <a role="button" class="btn btn-default btn-success" target="_blank" href="{{details.url}}">Navigate</a>
-                    <h4>{{ phone }}</h4>
+                    <div class="col-xs-4">
+                        <a role="button" class="btn btn-info btn-block btn-md" target="_blank" href="tel:{{phone}}">Call</a>
+                    </div>
+                    <div class="col-xs-4">
+                        <a role="button" class="btn btn-info btn-block btn-md" target="_blank" href="{{details.url}}">Directions</a>
+                    </div>
+                    <div class="col-xs-4">
+                        <a role="button" class="btn btn-info btn-block btn-md" target="_blank" href="{{details.website}}">Website</a>
+                    </div>
+
                     <section>
                         <h4>User Rating:&nbsp;&nbsp;{{placeInfo.googleRating}}</h4>
                         <h4>Reviews:</h4>
