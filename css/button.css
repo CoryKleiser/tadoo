@@ -39,6 +39,8 @@ span{
 .btn-success{
     background-color: #24a38a;
     border: none;
+    color: #ececec;
+    padding-bottom: 15px;
 }
     .btn-success:link{
         background-color: #57d1b9;
