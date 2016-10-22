@@ -1,7 +1,7 @@
-body{
+html, body{
     color: #dee9fa;
     background-color: #ececec;
-    min-width:450px;
+    min-width:350px;
 }
 
 header{
@@ -50,6 +50,10 @@ img{
     background-position:center center;
     background-size: cover;
     height:150px;
+}
+.img-rounded{
+    padding:0;
+    margin:10px 0;
 }
 /*TODO: fix content so footer does not cover it up*/
 #list header{
