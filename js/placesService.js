@@ -90,11 +90,11 @@ angular.module(`tadooApp.service`, [])
             });
         };
 
-                //TODO: find details on specified place
+                //: find details on specified place
                 places.findDetails = function (id) {
                     return new Promise(function (resolve, reject) {
 
-
+//TODO:: resolve no website issue
 
                         places.details = {};
 
