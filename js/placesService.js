@@ -52,13 +52,12 @@ angular.module(`tadooApp.service`, [])
                         console.log(results);
                         //: cycle through place results and filter needed information
                         //value to set spot in array
-                        let j = 0;
                         for (var i = 0; i < results.length; i++) {
                             var place = results[i];
 
                             //set results
                             const genInfo = {
-                                index: j,
+                                index: i,
                                 id: place.place_id,
                                 name: place.name,
                                 googleRating: place.rating,
@@ -73,13 +72,8 @@ angular.module(`tadooApp.service`, [])
                                 genInfo.googleRating = `N/A`;
                             }
 
-                            //:  filter logic to improve places found
-                            if (place.rating >= 3.8 || place.types.includes(`gas_station`)) {
-
                                 places.found.push(genInfo);
-                                j++;
 
-                            }
 
                         }
 
