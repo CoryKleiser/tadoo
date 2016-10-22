@@ -64,4 +64,10 @@ span{
     .btn-info:hover{
         background-color: #ffd386;
     }
+    .btn-info:active{
+        background-color: #ffd386;
+    }
+    .btn-info:active:hover{
+        background-color: #ffd386;
+    }
 
