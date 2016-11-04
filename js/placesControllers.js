@@ -30,7 +30,33 @@ angular.module(`tadooApp.controller`, [])
 
         //instantiate locations var
         $scope.locations = [];
-        $scope.radius = 5000;
+
+        $scope.getLocations = function (){
+            if($scope.radiusMiles==0 || $scope.radiusMiles==null){
+                $scope.radiusMiles=2;
+                $scope.getLocations();
+            }
+            else{
+                $scope.radius = $scope.radiusMiles * 1609.34;
+
+                const request = {
+                    location: locate.userLocation,
+                    radius: $scope.radius,
+                    types: $scope.category
+                };
+
+                places
+                    .findPlaces(request)
+                    .then(function(locations) {
+                        $scope.locations = locations;
+                        console.log(locations);
+                        $scope.$apply();
+                    })
+                    .catch(function(err) {
+                        console.log(err);
+                    });
+            }
+        };
 
         //finds itemId
         let itemId = $routeParams.itemId;
@@ -74,16 +100,7 @@ angular.module(`tadooApp.controller`, [])
         };
 
 
-        places
-            .findPlaces(request)
-            .then(function(locations) {
-                $scope.locations = locations;
-                console.log(locations);
-                $scope.$apply();
-            })
-            .catch(function(err) {
-                console.log(err);
-            });
+        $scope.getLocations();
 
     })
 
