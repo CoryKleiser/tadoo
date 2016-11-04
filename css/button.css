@@ -9,8 +9,8 @@ a{
 span{
     font-size:1em;
 }
-    /*span:focus{color: #b5cadc;}*/
-    /*span:hover{color: #b5cadc;  }*/
+    #btn-radius:focus{color: #23527c;}
+    #btn-radius:hover{color: #23527c;  }
 #rating{
     font-size:.6em;
 }
@@ -40,7 +40,6 @@ span{
     background-color: #24a38a;
     border: none;
     color: #ececec;
-    padding-bottom: 15px;
 }
     .btn-success:link{
         background-color: #57d1b9;
