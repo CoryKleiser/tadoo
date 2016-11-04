@@ -16,23 +16,23 @@ span{
 }
 
 .btn-primary{
-    background-color: #ff8638;
+    background-color: #0990ca;
     border: none;
 }
     .btn-primary:link{
-        background-color: #ffb686;
+        background-color: #58b1d7;
     }
     .btn-primary:hover{
-        background-color: #ffb686;
+        background-color: #58b1d7;
     }
     .btn-primary:active{
-        background-color: #ffb686;
+        background-color: #58b1d7;
     }
     .btn-primary:active:hover{
-        background-color: #ffb686;
+        background-color: #58b1d7;
     }
     .btn-primary.disabled:hover{
-        background-color: #ffb686;
+        background-color: #58b1d7;
     }
 
 
@@ -62,6 +62,9 @@ span{
     border: none;
 }
     .btn-info:hover{
+        background-color: #ffd386;
+    }
+    .btn-info:focus{
         background-color: #ffd386;
     }
     .btn-info:active{
